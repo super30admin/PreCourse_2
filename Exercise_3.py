@@ -1,20 +1,33 @@
 # Node class  
-class Node:  
-  
-    # Function to initialise the node object  
-    def __init__(self, data):  
+class Node:
+	# Function to initialise the node object
+	def __init__(self, data):
+		self.data = data
+		self.next = None
         
-class LinkedList: 
-  
-    def __init__(self): 
-        
-  
-    def push(self, new_data): 
-        
-  
+class LinkedList:
+	def __init__(self):
+		self.head = None
+
+	def push(self, new_data):
+		node = Node(new_data)
+		node.next = self.head
+		self.head = node
+	
     # Function to get the middle of  
-    # the linked list 
-    def printMiddle(self): 
+    # the linked list
+	def printMiddle(self):
+		#Edge case
+		if self.head == None:
+			return -1
+		#Applyinf Floyd's algorithm
+		slow = self.head
+		fast = self.head
+		while fast != None and fast.next != None:
+			fast = fast.next.next
+			slow = slow.next
+		print(slow.data)
+		
 
 # Driver code 
 list1 = LinkedList() 
