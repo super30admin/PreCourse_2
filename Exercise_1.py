@@ -3,9 +3,22 @@
   
 # It returns location of x in given array arr  
 # if present, else returns -1 
+
+# defining the binary serch
 def binarySearch(arr, l, r, x): 
-  
-  #write your code here
+    while  l<=r:
+        mid =l+(r-l)//2
+# checking if the x is at mid then return mid
+        if arr[mid] ==x:
+            return mid
+# if the x is greater than element at mid  then ignore the left half
+        elif arr[mid]<=x:
+            l=mid+1
+# if the x is less than element at mid then ignore the right half
+        else:
+            r=mid-1
+# if none of the element is  matching in an array then return -1
+    return -1
   
     
   
