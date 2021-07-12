@@ -6,22 +6,57 @@ class QuickSort
        smaller (smaller than pivot) to left of 
        pivot and all greater elements to right 
        of pivot */
+    // TC: O(1)
     void swap(int arr[],int i,int j){
         //Your code here   
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
     
-    int partition(int arr[], int low, int high) 
+    // TC: O(N)
+   int partition(int arr[], int low, int high) 
     { 
-   	//Write code here for Partition and Swap 
+        int piv = low;
+        
+        int s = low + 1, e = high;
+
+        while(s <= e)
+        {
+            if(arr[s] <= arr[piv])
+            {
+                s++;
+            }
+            else if(arr[e] >= arr[piv])
+            {
+                e--;
+            }
+            else 
+            {
+                swap(arr, s, e);
+                s++;
+                e--;
+            }
+        }
+        
+        swap(arr, s - 1, piv);
+
+        return s - 1;
     } 
     /* The main function that implements QuickSort() 
       arr[] --> Array to be sorted, 
       low  --> Starting index, 
       high  --> Ending index */
-    void sort(int arr[], int low, int high) 
+    // TC: O(N Lg N). (N ^ 2) In worst case
+    // SC: O(Lg N).. Recursive Stack
+   void sort(int arr[], int low, int high) 
     {  
-            // Recursively sort elements before 
-            // partition and after partition 
+            if(low < high)
+            {
+                int piv = partition(arr, low, high);
+                sort(arr, low, piv - 1);
+                sort(arr, piv + 1, high);
+            }
     } 
   
     /* A utility function to print array of size n */

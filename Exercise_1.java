@@ -1,8 +1,28 @@
 class BinarySearch { 
     // Returns index of x if it is present in arr[l.. r], else return -1 
+    // TC: O(Lg N). Where N = r - l + 1 (Or size of array)
     int binarySearch(int arr[], int l, int r, int x) 
     { 
-        //Write your code here
+        int result = -1;
+        while(l <= r)
+        {
+            int mid = l + (r - l) / 2;
+            if(x == arr[mid])
+            {
+                result = mid;
+                break;
+            }
+            else if(x > arr[mid])
+            {
+                l = mid + 1;
+            }
+            else 
+            {
+                r = mid - 1;
+            }
+        }
+
+        return result;
     } 
   
     // Driver method to test above 
